@@ -58,3 +58,75 @@ function comprobarDNI(dni) {
 function nuemroAleatorio(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
+
+function calculadora() {
+  var numero1 = document.getElementById("numero1").value;
+  var numero2 = document.getElementById("numero2").value;
+  var operacion = document.getElementById("operacion").value;
+  var resultado = 0;
+  if (operacion == "suma") {
+    resultado = parseInt(numero1) + parseInt(numero2);
+  } else if (operacion == "resta") {
+    resultado = parseInt(numero1) - parseInt(numero2);
+  } else if (operacion == "multiplicacion") {
+    resultado = parseInt(numero1) * parseInt(numero2);
+  } else if (operacion == "division") {
+    resultado = parseInt(numero1) / parseInt(numero2);
+  }
+  document.getElementById("resultado").innerHTML = resultado;
+}
+
+function darkMode() {
+  var body = document.getElementsByTagName("body")[0];
+  var bodyClass = body.className;
+  if (bodyClass == "dark") {
+    body.className = "";
+  } else {
+    body.className = "dark";
+  }
+}
+
+function listadoDeNumerosPrimos() {
+  var numero = document.getElementById("numero").value;
+  var resultado = "";
+  for (var i = 1; i <= numero; i++) {
+    var esPrimo = true;
+    for (var j = 2; j < i; j++) {
+      if (i % j == 0) {
+        esPrimo = false;
+      }
+    }
+    if (esPrimo) {
+      resultado += i + " ";
+    }
+  }
+  document.getElementById("resultado").innerHTML = resultado;
+}
+
+expresion_regular_dni = /^\d{8}[a-zA-Z]$/;
+expresion_regular_CIF = /^[A-HJ-NP-SUVW]\d{7}[A-J]$/;
+expresion_regular_email =
+  /^[a-zA-Z0-9_\.\-]+@[a-zA-Z0-9\-]+\.[a-zA-Z0-9\-\.]+$/;
+
+lamda = (x) => {
+  comprobarDNI(x);
+};
+
+// crear una funcion que calcule los 20 primeros numeros primos
+function primos() {
+  var resultado = "";
+  for (var i = 1; i <= 20; i++) {
+    var esPrimo = true;
+    for (var j = 2; j < i; j++) {
+      if (i % j == 0) {
+        esPrimo = false;
+      }
+    }
+    if (esPrimo) {
+      resultado += i + " ";
+    }
+  }
+  console.log(resultado);
+}
+
+primos();
